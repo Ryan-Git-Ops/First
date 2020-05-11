@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WheelsOnTapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OWNER">
+    <Key>
+      <PropertyRef Name="OWNER_ID" />
+    </Key>
+    <Property Name="OWNER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LAST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PHONE_NUMBER" Type="Int64" Nullable="false" />
+    <Property Name="ADDRESS_LINE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ADDRESS_LINE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="STATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="POSTAL_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATE_OF_BIRTH" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SOCIAL_SECURITY" Type="Int64" Nullable="false" />
+    <Property Name="INSURANCE_POLICY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RENTALS" Relationship="Self.FK__RENTALS__OWNER_I__3E52440B" FromRole="OWNERS" ToRole="RENTALS" />
+    <NavigationProperty Name="VEHICLEs" Relationship="Self.FK__VEHICLE__OWNER_I__3B75D760" FromRole="OWNERS" ToRole="VEHICLE" />
+  </EntityType>
+  <EntityType Name="RENTAL">
+    <Key>
+      <PropertyRef Name="RENTAL_ID" />
+    </Key>
+    <Property Name="RENTAL_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OWNER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RENTER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VEHICLE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="END_DATE" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="COST" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="OWNER" Relationship="Self.FK__RENTALS__OWNER_I__3E52440B" FromRole="RENTALS" ToRole="OWNERS" />
+    <NavigationProperty Name="RENTER" Relationship="Self.FK__RENTALS__RENTER___3F466844" FromRole="RENTALS" ToRole="RENTERS" />
+    <NavigationProperty Name="VEHICLE" Relationship="Self.FK__RENTALS__VEHICLE__403A8C7D" FromRole="RENTALS" ToRole="VEHICLE" />
+  </EntityType>
+  <EntityType Name="RENTER">
+    <Key>
+      <PropertyRef Name="RENTER_ID" />
+    </Key>
+    <Property Name="RENTER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LAST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PHONE_NUMBER" Type="Int64" Nullable="false" />
+    <Property Name="ADDRESS_LINE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ADDRESS_LINE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="STATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="POSTAL_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATE_OF_BIRTH" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SOCIAL_SECURITY" Type="Int64" Nullable="false" />
+    <Property Name="INSURANCE_POLICY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RENTALS" Relationship="Self.FK__RENTALS__RENTER___3F466844" FromRole="RENTERS" ToRole="RENTALS" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VEHICLE">
+    <Key>
+      <PropertyRef Name="VEHICLE_ID" />
+    </Key>
+    <Property Name="VEHICLE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OWNER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAKE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MODEL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YEAR" Type="Int32" Nullable="false" />
+    <Property Name="VIN" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="OWNER" Relationship="Self.FK__VEHICLE__OWNER_I__3B75D760" FromRole="VEHICLE" ToRole="OWNERS" />
+    <NavigationProperty Name="RENTALS" Relationship="Self.FK__RENTALS__VEHICLE__403A8C7D" FromRole="VEHICLE" ToRole="RENTALS" />
+  </EntityType>
+  <Association Name="FK__RENTALS__OWNER_I__3E52440B">
+    <End Role="OWNERS" Type="Self.OWNER" Multiplicity="1" />
+    <End Role="RENTALS" Type="Self.RENTAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OWNERS">
+        <PropertyRef Name="OWNER_ID" />
+      </Principal>
+      <Dependent Role="RENTALS">
+        <PropertyRef Name="OWNER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VEHICLE__OWNER_I__3B75D760">
+    <End Role="OWNERS" Type="Self.OWNER" Multiplicity="1" />
+    <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OWNERS">
+        <PropertyRef Name="OWNER_ID" />
+      </Principal>
+      <Dependent Role="VEHICLE">
+        <PropertyRef Name="OWNER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RENTALS__RENTER___3F466844">
+    <End Role="RENTERS" Type="Self.RENTER" Multiplicity="1" />
+    <End Role="RENTALS" Type="Self.RENTAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RENTERS">
+        <PropertyRef Name="RENTER_ID" />
+      </Principal>
+      <Dependent Role="RENTALS">
+        <PropertyRef Name="RENTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RENTALS__VEHICLE__403A8C7D">
+    <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="1" />
+    <End Role="RENTALS" Type="Self.RENTAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VEHICLE">
+        <PropertyRef Name="VEHICLE_ID" />
+      </Principal>
+      <Dependent Role="RENTALS">
+        <PropertyRef Name="VEHICLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WheelsOnTapEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OWNERS" EntityType="Self.OWNER" />
+    <EntitySet Name="RENTALS" EntityType="Self.RENTAL" />
+    <EntitySet Name="RENTERS" EntityType="Self.RENTER" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="VEHICLEs" EntityType="Self.VEHICLE" />
+    <AssociationSet Name="FK__RENTALS__OWNER_I__3E52440B" Association="Self.FK__RENTALS__OWNER_I__3E52440B">
+      <End Role="OWNERS" EntitySet="OWNERS" />
+      <End Role="RENTALS" EntitySet="RENTALS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VEHICLE__OWNER_I__3B75D760" Association="Self.FK__VEHICLE__OWNER_I__3B75D760">
+      <End Role="OWNERS" EntitySet="OWNERS" />
+      <End Role="VEHICLE" EntitySet="VEHICLEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RENTALS__RENTER___3F466844" Association="Self.FK__RENTALS__RENTER___3F466844">
+      <End Role="RENTERS" EntitySet="RENTERS" />
+      <End Role="RENTALS" EntitySet="RENTALS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RENTALS__VEHICLE__403A8C7D" Association="Self.FK__RENTALS__VEHICLE__403A8C7D">
+      <End Role="VEHICLE" EntitySet="VEHICLEs" />
+      <End Role="RENTALS" EntitySet="RENTALS" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WheelsOnTapModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WheelsOnTapModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

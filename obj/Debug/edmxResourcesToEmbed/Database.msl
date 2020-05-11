@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WheelsOnTapModelStoreContainer" CdmEntityContainer="WheelsOnTapEntities">
+    <EntitySetMapping Name="OWNERS">
+      <EntityTypeMapping TypeName="WheelsOnTapModel.OWNER">
+        <MappingFragment StoreEntitySet="OWNERS">
+          <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+          <ScalarProperty Name="ADDRESS_LINE1" ColumnName="ADDRESS_LINE1" />
+          <ScalarProperty Name="ADDRESS_LINE2" ColumnName="ADDRESS_LINE2" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="SOCIAL_SECURITY" ColumnName="SOCIAL_SECURITY" />
+          <ScalarProperty Name="INSURANCE_POLICY" ColumnName="INSURANCE_POLICY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RENTALS">
+      <EntityTypeMapping TypeName="WheelsOnTapModel.RENTAL">
+        <MappingFragment StoreEntitySet="RENTALS">
+          <ScalarProperty Name="RENTAL_ID" ColumnName="RENTAL_ID" />
+          <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+          <ScalarProperty Name="RENTER_ID" ColumnName="RENTER_ID" />
+          <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+          <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+          <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+          <ScalarProperty Name="COST" ColumnName="COST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RENTERS">
+      <EntityTypeMapping TypeName="WheelsOnTapModel.RENTER">
+        <MappingFragment StoreEntitySet="RENTERS">
+          <ScalarProperty Name="RENTER_ID" ColumnName="RENTER_ID" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+          <ScalarProperty Name="ADDRESS_LINE1" ColumnName="ADDRESS_LINE1" />
+          <ScalarProperty Name="ADDRESS_LINE2" ColumnName="ADDRESS_LINE2" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="SOCIAL_SECURITY" ColumnName="SOCIAL_SECURITY" />
+          <ScalarProperty Name="INSURANCE_POLICY" ColumnName="INSURANCE_POLICY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="WheelsOnTapModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEHICLEs">
+      <EntityTypeMapping TypeName="WheelsOnTapModel.VEHICLE">
+        <MappingFragment StoreEntitySet="VEHICLE">
+          <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+          <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+          <ScalarProperty Name="MAKE" ColumnName="MAKE" />
+          <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="VIN" ColumnName="VIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WheelsOnTapModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WheelsOnTapModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WheelsOnTapModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WheelsOnTapModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WheelsOnTapModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WheelsOnTapModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WheelsOnTapModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WheelsOnTapModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WheelsOnTapModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
